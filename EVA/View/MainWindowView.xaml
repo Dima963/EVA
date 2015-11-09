@@ -1,0 +1,189 @@
+﻿<Window x:Class="EVA.View.MainWindowView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EVA.ViewModel"
+        mc:Ignorable="d"
+     Title="EVA" Height="692" Width="959"  MinHeight="692" MinWidth="959" WindowStartupLocation="CenterScreen" Opacity="0.9" UseLayoutRounding="False" SnapsToDevicePixels="True" WindowStyle="ThreeDBorderWindow" Foreground="#FF5F5D5D" >
+
+
+
+
+    <Window.Background>
+        <SolidColorBrush Color="White" />
+    </Window.Background>
+
+
+
+
+    <Grid IsHitTestVisible="True"    >
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="213*"/>
+            <ColumnDefinition Width="257*"/>
+            <ColumnDefinition Width="286*"/>
+            <ColumnDefinition Width="189*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="22"/>
+            <RowDefinition Height="43"/>
+            <RowDefinition Height="161"/>
+            <RowDefinition Height="29"/>
+            <RowDefinition Height="183"/>
+            <RowDefinition Height="29"/>
+            <RowDefinition Height="193*"/>
+            <RowDefinition/>
+            <RowDefinition Height="0*"/>
+        </Grid.RowDefinitions>
+
+
+        <DockPanel Grid.ColumnSpan="6">
+
+            <Menu DockPanel.Dock="Top" Height="22">
+
+                <MenuItem Header="File" Height="22" Width="39" FlowDirection="RightToLeft">
+                </MenuItem>
+
+                <MenuItem Header="Edit"  Height="22" Width="41">
+                </MenuItem>
+
+
+                <MenuItem Header="View" Height="22" Width="41">
+                </MenuItem>
+
+
+                <MenuItem Header="Option" Height="22" Width="50">
+
+                </MenuItem>
+
+                <MenuItem Header="Tools" Height="22" Width="45">
+                </MenuItem>
+
+                <MenuItem Header="Help" Height="22" Width="41">
+                </MenuItem>
+            </Menu>
+
+        </DockPanel>
+        <ToolBarPanel Grid.ColumnSpan="6"
+                       Grid.Column="0" Grid.Row="1" >
+            <Menu x:Name="Menu1"   
+        		Foreground="Black"  FontSize="14" Height="43"  >
+
+
+                <Menu.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FF7DCCEE" Offset="0.528"/>
+                        <GradientStop Color="#FFE2E2E2" Offset="0.01"/>
+                        <GradientStop Color="#FF58C4F3" Offset="10"/>
+                        <GradientStop Color="#FF7D89CD" Offset="1"/>
+                    </LinearGradientBrush>
+                </Menu.Background>
+
+
+                <MenuItem x:Name="Project" Header=" Project"  Width="65"  Height="43"  Command="{Binding openFormProject}" >
+                </MenuItem>
+
+                <MenuItem x:Name="Categor" Header="Categor" Foreground="Black" FontSize="14" Width="67"  Height="42" Command ="{Binding openFormCategor}" >
+
+                </MenuItem>
+
+
+
+                <MenuItem x:Name="Contact" Header=" Contact" Foreground="Black" FontSize="14" Width="69"  Height="42" Command="{Binding openFormConatct}" >
+
+                </MenuItem>
+                <MenuItem x:Name="Document" Header=" Document" Foreground="Black" FontSize="14" Width="91"  Height="43" Command="{Binding openFormDocument}" >
+
+
+
+                    <!-- <MenuItem.Background>
+                   <ImageBrush ImageSource="Database.png" Stretch="Fill"  />   
+                </MenuItem.Background> -->
+                </MenuItem>
+            </Menu>
+        </ToolBarPanel>
+        <ListBox x:Name="LBProjectEVA" Grid.Row="3" Grid.Column="1" AlternationCount="2"   Width="208" HorizontalAlignment="Center"  BorderBrush="White"  Height="190" VerticalAlignment="Bottom" Margin="1,0,4,0" Grid.RowSpan="2"  >
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="{x:Type ListBoxItem}">
+                    <Setter Property="Padding" Value="2"/>
+                    <Setter Property="Background" Value="LightGray"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                <Border x:Name="brd" Background="{TemplateBinding Background}" 
+                                         BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                    <ContentPresenter Margin="{TemplateBinding Padding}"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                                        <Setter Property="Background" Value="#FFBFBFBF"/>
+                                    </Trigger>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Background" Value="LimeGreen"/>
+                                        <Setter Property="Foreground" Value="White"/>
+                                        <Setter Property="BorderThickness" Value="1"/>
+                                        <Setter Property="BorderBrush" Value="Black"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListBox.ItemContainerStyle>
+        </ListBox>
+        <ListBox x:Name="LBCategorEVA" Grid.Row="6" Grid.Column="1"  Foreground="#FFABADB3" BorderBrush="White" Margin="1,3,6,12"/>
+        <Calendar Grid.Row="2" BorderBrush="White"  Height =" 167"  Width ="178"  Grid.RowSpan="2"
+                  Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="19,0,16,0" >
+            <Calendar.Background>
+                <LinearGradientBrush   >
+                    <GradientStop Color="#FFFFFFFF"  />
+                </LinearGradientBrush>
+            </Calendar.Background>
+
+        </Calendar>
+
+        <Rectangle Fill="#FFABADB3"  Grid.Row="2" Stroke="#FFABADB3" Height="596" Width ="4" VerticalAlignment="Center" HorizontalAlignment="Center"  Grid.Column="1" Margin="209,1,0,-1" Grid.RowSpan="7" RenderTransformOrigin="0.5,0.5"  >
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Grid Grid.ColumnSpan="3" Grid.RowSpan="6" Grid.Row="2" Grid.Column="2" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="595*" />
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="369*"  />
+                <ColumnDefinition Width="361*"   />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Margin="0,20,0,0"    >
+                <ListBox x:Name="LBTaskEVA" Grid.Column="1" Height="575"  Background="White"  BorderBrush="White"    />
+
+            </StackPanel>
+            <GridSplitter HorizontalAlignment="Left"
+              Background="Gray" 
+              ShowsPreview="True"
+              Width="2" Grid.Column="1" Margin="0,20,0,0"/>
+            <ListBox Grid.Column="1" Background="White" Margin="4,20,0,0"  />
+            <Rectangle Fill="White"    HorizontalAlignment="Left" Height="20" Stroke="#FFABADB3" VerticalAlignment="Top" Width="730" Grid.ColumnSpan="2"/>
+        </Grid>
+        <TextBlock  Grid.Row="3" TextWrapping="Wrap" Text="Project" VerticalAlignment="Top" Height="16"  HorizontalAlignment="Left" Width="37" Grid.Column="1"/>
+        <TextBlock  Grid.Row="5" TextWrapping="Wrap" Height =" 16"  Text="Categor"  HorizontalAlignment="Left" Width="48" Grid.Column="1" VerticalAlignment="Top"/>
+        <Rectangle Fill="#FFFFFFFF"  Grid.Row="3" Stroke="#FFABADB3" Height="1" Width =" 208" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Margin="1,14,4,14"  />
+        <Rectangle Fill="#FFFFFFFF" Grid.Row="5" Stroke="#FFABADB3" Height="1" Width =" 208" VerticalAlignment="Center"  HorizontalAlignment="Center" Grid.Column="1" Margin="1,14,4,14"  />
+
+
+    </Grid>
+</Window>

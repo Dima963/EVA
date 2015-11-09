@@ -1,0 +1,19 @@
+﻿<Window x:Class="EVA.View.AddCategor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EVA.View"
+        xmlns:viewModel="clr-namespace:EVA.ViewModel"
+        mc:Ignorable="d"
+        Title="Categor" Height="127.467" Width="300" MinHeight="127.467" MinWidth="300" Background="White">
+
+
+
+    <Grid>
+        <TextBox x:Name="TbName" Margin="10,31,10,42" TextWrapping="Wrap" Text="{Binding Path = SelectCategor.NameCategor, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBlock x:Name="NameProject" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top"/>
+        <Button x:Name="BntAddProject" Content="Add" Command="{Binding addCategor}" HorizontalAlignment="Left" Margin="207,66,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.63,1.103"/>
+
+    </Grid>
+</Window>
