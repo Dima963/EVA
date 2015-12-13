@@ -54,8 +54,7 @@
     <Compile Include="DataContext.cs" />
     <Compile Include="Document.cs" />
     <Compile Include="Group.cs" />
-    <Compile Include="Observer\IObserver.cs" />
-    <Compile Include="Observer\ISubject.cs" />
+    <Compile Include="Note.cs" />
     <Compile Include="Project.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Task.cs" />

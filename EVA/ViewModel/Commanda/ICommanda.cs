@@ -10,6 +10,7 @@ namespace EVA.ViewModel.Commanda
    public  interface ICommanda
    {
        void Execute();
-   
+       void Redo();
+
    }
 }

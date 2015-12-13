@@ -8,7 +8,7 @@
         mc:Ignorable="d"
          Title="PROJECT" Height="384" Width="556"   Background="#FFF4F4F5" WindowStartupLocation="CenterScreen" >
 
-  
+
 
 
     <Grid>
@@ -28,13 +28,13 @@
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
 
-        <ListBox x:Name="LbProject" Grid.ColumnSpan="5" Grid.Column="1"  ItemsSource="{Binding Projects}" SelectedItem="{Binding SelectProject}" HorizontalAlignment="Left" Height="266" VerticalAlignment="Top" Width="548" Grid.Row="2">
+        <ListBox x:Name="LbProject" Grid.ColumnSpan="5" Grid.Column="1"  ItemsSource="{Binding Projects}" SelectedItem="{Binding SelectProject}" Grid.Row="2">
 
-            
+
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid Margin="3" >
-                        
+
                         <Grid.RowDefinitions>
                             <RowDefinition />
                             <RowDefinition />
@@ -58,14 +58,14 @@
 
         <ToolBar Grid.ColumnSpan="6" Background="#FFEAEAEE" Grid.Row="0" Grid.RowSpan="2" Height="30" VerticalAlignment="Top">
 
-            <Button x:Name="ButtoneEditProject" Content="Edit" Height ="20"  Width="46"   Background="#FFEAEAEE" VerticalAlignment="Center"/>
-            <Button x:Name="ButtoneDellProject" Content="Del"  Width ="45"  Height="20" Command="{Binding removeProject}"   Background="#FFEAEAEE"  VerticalAlignment="Center" HorizontalAlignment="Right"/>
-            <Button x:Name="ButtoneAddProject" Width ="45" Height="20"  Command="{Binding openFormAddProject}" Content="Add" HorizontalAlignment="Left"   Background="#FFEAEAEE"  VerticalAlignment="Center"  />
+            <Button x:Name="ButtoneEditProject" Content="Edit"  Width="46"   Background="#FFEAEAEE"  VerticalAlignment="Stretch" Margin="0,2,0,3"/>
+            <Button x:Name="ButtoneDellProject" Content="Del"  Width ="45" Command="{Binding removeProject}"   Background="#FFEAEAEE"  VerticalAlignment="Stretch" HorizontalAlignment="Right" Margin="0,2,0,3"/>
+            <Button x:Name="ButtoneAddProject" Width ="45"  Command="{Binding openFormAddProject}" Content="Add" HorizontalAlignment="Left"   Background="#FFEAEAEE"  VerticalAlignment="Stretch" Margin="0,2,0,3"  />
 
-            <TextBox Width ="261"  TextWrapping="Wrap" Text="Search" Background="#FFEAEAEE" Height ="20"  VerticalAlignment="Center"  />
+            <TextBox Width ="261"  TextWrapping="Wrap" Text="Search" Background="#FFEAEAEE"  VerticalAlignment="Stretch" Margin="0,2,0,3"  />
 
         </ToolBar>
-        <Button x:Name="button" Content="Save" Grid.Column="4" HorizontalAlignment="Left" Margin="112,10,0,0" Grid.Row="3" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="button" Content="Save" Grid.Column="4" Margin="0,10,0,0" Grid.Row="3" VerticalAlignment="Top" HorizontalAlignment="Right" Width="75"/>
 
 
 

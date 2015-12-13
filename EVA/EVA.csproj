@@ -48,6 +48,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -72,6 +73,10 @@
     <Compile Include="ViewModel\Commanda\Invoker.cs" />
     <Compile Include="ViewModel\Commanda\OpenCommand.cs" />
     <Compile Include="ViewModel\Commanda\Reciver.cs" />
+    <Compile Include="ViewModel\Strategy\IReader.cs" />
+    <Compile Include="ViewModel\Strategy\ReaderContext.cs" />
+    <Compile Include="ViewModel\Strategy\ReaderDJVU.cs" />
+    <Compile Include="ViewModel\Strategy\ReaderPDF.cs" />
     <Compile Include="View\AddCategor.xaml.cs">
       <DependentUpon>AddCategor.xaml</DependentUpon>
     </Compile>
@@ -84,11 +89,17 @@
     <Compile Include="View\DocumentsForm.xaml.cs">
       <DependentUpon>DocumentsForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\NoteForm.xaml.cs">
+      <DependentUpon>NoteForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ProjectsForm.xaml.cs">
       <DependentUpon>ProjectsForm.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Tasks.xaml.cs">
-      <DependentUpon>Tasks.xaml</DependentUpon>
+    <Compile Include="View\ReaderPDF.xaml.cs">
+      <DependentUpon>ReaderPDF.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TasksForm.xaml.cs">
+      <DependentUpon>TasksForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\CategorsForms.xaml.cs">
       <DependentUpon>CategorsForms.xaml</DependentUpon>
@@ -124,11 +135,19 @@
       <DependentUpon>MainWindowView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\NoteForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\ProjectsForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Tasks.xaml">
+    <Page Include="View\ReaderPDF.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TasksForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -163,7 +182,9 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ClassLibraryEVA\ClassLibraryEVA.csproj">
@@ -171,7 +192,9 @@
       <Name>ClassLibraryEVA</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="document.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

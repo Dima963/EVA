@@ -11,23 +11,22 @@ namespace EVA.ViewModel.Commanda
     public class Invoker
    {
 
-       private ICommanda _openCommand;
-       private ICommanda _closeCommand;
+       private ICommanda _сommand;
+       
 
-       public Invoker(ICommanda openCommand, ICommanda closeCommand)
+       public Invoker(ICommanda сommand)
        {
-           _openCommand = openCommand;
-           _closeCommand = closeCommand;
+           _сommand = сommand;
        }
 
        public void Close()
        {
-            _closeCommand.Execute();
+            _сommand.Execute();
        }
 
        public void Open()
        {
-            _openCommand.Execute();
+            _сommand.Execute();
        }
 
    }

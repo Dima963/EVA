@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\X\Documents\Visual Studio 2015\Projects\EVA\EVA\App.xaml
-8-91695102
+101662501486
 
-23-1659824437
-21915588132
-View\AddCategor.xaml;View\AddProject.xaml;View\ContactsForm.xaml;View\DocumentsForm.xaml;View\MainWindowView.xaml;View\ProjectsForm.xaml;View\Tasks.xaml;View\CategorsForms.xaml;
+29-1507594260
+22-1251244276
+View\AddCategor.xaml;View\AddProject.xaml;View\ContactsForm.xaml;View\DocumentsForm.xaml;View\MainWindowView.xaml;View\NoteForm.xaml;View\ProjectsForm.xaml;View\ReaderPDF.xaml;View\TasksForm.xaml;View\CategorsForms.xaml;
 
-False
+True
 

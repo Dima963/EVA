@@ -18,7 +18,12 @@ namespace EVA.ViewModel.Commanda
 
         public void Execute()
         {
-            
+          _reciver.OpenForm();  
+        }
+
+        public void Redo()
+        {
+           
         }
     }
 }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using EVA.View;
 
 namespace EVA.ViewModel.Commanda
 {
@@ -11,6 +7,8 @@ namespace EVA.ViewModel.Commanda
 
         public void OpenForm()
         {
+            var document = new DocumentsForm();
+            document.Show();
 
         }
 

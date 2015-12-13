@@ -10,6 +10,10 @@ namespace ClassLibraryEVA
     {
        public int DocumentId { get; set; }
 
-       public string NameDocument { get; set; }
+       public string PathDocument { get; set; }
+
+
+      
     }
 }
+

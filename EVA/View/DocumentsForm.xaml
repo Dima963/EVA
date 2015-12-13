@@ -1,12 +1,54 @@
 ﻿<Window x:Class="EVA.View.DocumentsForm"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:EVA.View"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
-        Title="DocumentsForm" Height="300" Width="300">
+        Title="DocumentsForm" Height="441" Width="855">
     <Grid>
-        
+        <ToolBar Grid.ColumnSpan="6" Background="#FFEAEAEE" Grid.RowSpan="2" Height="30" VerticalAlignment="Top">
+
+            <Button x:Name="btnAddDocument" Content="Add"   Width ="74"  Background="#FFEAEAEE"  VerticalAlignment="Stretch"  Command="{Binding addCommand}"  HorizontalAlignment="Right" Margin="0,2,0,3"  />
+            <Button x:Name="btnDelDocument" Width ="74"  Content="Del" HorizontalAlignment="Left"   Background="#FFEAEAEE"  VerticalAlignment="Stretch" Margin="0,2,0,3"  />
+
+            <TextBox Width ="261"  TextWrapping="Wrap" Text="Search" Background="#FFEAEAEE"  VerticalAlignment="Stretch" Margin="0,2,0,3"  />
+
+        </ToolBar>
+        <ListBox x:Name="lbDocument" Margin="0,30,0,0"  ItemsSource="{Binding Documents}" SelectedItem="{Binding SelectDocument}"   >
+
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDoubleClick">
+                    <i:InvokeCommandAction Command="{Binding openDocument}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+
+
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+
+                    <Grid Margin="0,5,0,0">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                       
+                        <TextBlock  Grid.Column="1" Grid.Row="0" Margin="3" Text="{Binding PathDocument }" />
+
+                        <Image x:Name="ImageDocument"  Height="80" Width="80" Source="../document.png"  Grid.Column="0" Grid.Row="0"/>
+                    
+
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+                           
+                                
+        </ListBox  >
+
     </Grid>
 </Window>

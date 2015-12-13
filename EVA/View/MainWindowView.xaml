@@ -66,6 +66,10 @@
 
                 <MenuItem Header="Help" Height="22" Width="41">
                 </MenuItem>
+
+                <MenuItem Header="Synchronization" Height="22" Width="97">
+                </MenuItem>
+
             </Menu>
 
         </DockPanel>
@@ -107,7 +111,22 @@
                 </MenuItem>
             </Menu>
         </ToolBarPanel>
-        <ListBox x:Name="LBProjectEVA" Grid.Row="3" Grid.Column="1" AlternationCount="2"   Width="208" HorizontalAlignment="Center"  BorderBrush="White"  Height="190" VerticalAlignment="Bottom" Margin="1,0,4,0" Grid.RowSpan="2"  >
+        <ListBox x:Name="LbProjectEva" Grid.Row="3" Grid.Column="1" AlternationCount="2" ItemsSource="{Binding Projects}" SelectedItem="{Binding SelectProject}" BorderBrush="White"  Height="196" VerticalAlignment="Bottom" Margin="1,0,4,0" Grid.RowSpan="2"  >
+
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="3" >
+
+
+                        <TextBlock  Margin="3" Text="{Binding NameProject}" />
+
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+
+
+
+
             <ListBox.ItemContainerStyle>
                 <Style TargetType="{x:Type ListBoxItem}">
                     <Setter Property="Padding" Value="2"/>
@@ -136,9 +155,34 @@
                 </Style>
             </ListBox.ItemContainerStyle>
         </ListBox>
-        <ListBox x:Name="LBCategorEVA" Grid.Row="6" Grid.Column="1"  Foreground="#FFABADB3" BorderBrush="White" Margin="1,3,6,12"/>
-        <Calendar Grid.Row="2" BorderBrush="White"  Height =" 167"  Width ="178"  Grid.RowSpan="2"
-                  Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="19,0,16,0" >
+        <ListBox x:Name="LBCategorEVA" Grid.Row="5" Grid.Column="1" ItemsSource="{Binding Categors}" SelectedItem="{Binding SelectCategor}"  Foreground="#FFABADB3" BorderBrush="White" Margin="1,16,6,0" Grid.RowSpan="2">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="3" >
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" Grid.Row="0" Margin="3" Text="{Binding NameCategor}" />
+                        <StackPanel  Grid.Column="0" Grid.Row="1" >
+                            <StackPanel>
+                                <Separator x:Name="Separator" Background="Black" HorizontalAlignment="Stretch"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+
+
+        </ListBox>
+        <Calendar Grid.Row="2" BorderBrush="White"  Height =" 167"  Grid.RowSpan="2"
+                  Grid.Column="1" VerticalAlignment="Top" Margin="19,0,16,0" >
             <Calendar.Background>
                 <LinearGradientBrush   >
                     <GradientStop Color="#FFFFFFFF"  />
@@ -147,7 +191,7 @@
 
         </Calendar>
 
-        <Rectangle Fill="#FFABADB3"  Grid.Row="2" Stroke="#FFABADB3" Height="596" Width ="4" VerticalAlignment="Center" HorizontalAlignment="Center"  Grid.Column="1" Margin="209,1,0,-1" Grid.RowSpan="7" RenderTransformOrigin="0.5,0.5"  >
+        <Rectangle Fill="#FFABADB3"  Grid.Row="2" Stroke="#FFABADB3"  Grid.Column="1" Margin="0,0,0,1" Grid.RowSpan="5" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" Width="4"  >
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleX="-1"/>
@@ -159,8 +203,8 @@
         </Rectangle>
         <Grid Grid.ColumnSpan="3" Grid.RowSpan="6" Grid.Row="2" Grid.Column="2" >
             <Grid.RowDefinitions>
-                <RowDefinition Height="595*" />
-                <RowDefinition/>
+                <RowDefinition Height="19*" />
+                <RowDefinition Height="577*"/>
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
@@ -168,21 +212,75 @@
                 <ColumnDefinition Width="361*"   />
             </Grid.ColumnDefinitions>
 
-            <StackPanel Margin="0,20,0,0"    >
-                <ListBox x:Name="LBTaskEVA" Grid.Column="1" Height="575"  Background="White"  BorderBrush="White"    />
 
-            </StackPanel>
+            <ListBox x:Name="LbTaskEva" Grid.Row="1"  ItemsSource="{Binding Tasks}" SelectedItem="{Binding SelectTask}" Background="White"  BorderBrush="White"  Margin="0,1"    >
+
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="3" >
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Column="0" Grid.Row="0" Margin="3" Text="{Binding NameTask}" />
+                            <StackPanel  Grid.Column="0" Grid.Row="1" >
+                                <StackPanel>
+                                    <Separator x:Name="Separator" Background="Black" HorizontalAlignment="Stretch"/>
+
+                                </StackPanel>
+                            </StackPanel>
+                            <TextBlock  Grid.Column="0" Grid.Row="2" Margin="3"  Text="{Binding DescriptionTask}" />
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+
+            </ListBox>
+
             <GridSplitter HorizontalAlignment="Left"
               Background="Gray" 
               ShowsPreview="True"
-              Width="2" Grid.Column="1" Margin="0,20,0,0"/>
-            <ListBox Grid.Column="1" Background="White" Margin="4,20,0,0"  />
-            <Rectangle Fill="White"    HorizontalAlignment="Left" Height="20" Stroke="#FFABADB3" VerticalAlignment="Top" Width="730" Grid.ColumnSpan="2"/>
+              Width="2" Grid.Column="1" Margin="0,1,0,0" Grid.Row="1"/>
+            <ListBox Grid.Column="1"  BorderBrush="White" Background="White" Margin="4,1,0,0" Grid.Row="1"  />
+            <Rectangle Fill="White"    HorizontalAlignment="Left" Height="20" Stroke="White" VerticalAlignment="Top" Width="730" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+            <DockPanel Grid.ColumnSpan="2">
+
+                <Menu DockPanel.Dock="Top" Height="19">
+
+                    <MenuItem Header="Task" Command="{Binding openFormTask}" Height="19" Width="39" FlowDirection="RightToLeft">
+                    </MenuItem>
+
+                    <MenuItem Header="None" Command="{Binding openNote}"  Height="19" Width="42">
+                    </MenuItem>
+
+
+                    <MenuItem Header="Filter" Height="19" Width="41">
+                    </MenuItem>
+
+
+                    <MenuItem Header="Option" Height="19" Width="49">
+
+                    </MenuItem>
+
+                    <MenuItem Header="Marker" Height="19" Width="49">
+                    </MenuItem>
+
+
+                </Menu>
+
+            </DockPanel>
         </Grid>
         <TextBlock  Grid.Row="3" TextWrapping="Wrap" Text="Project" VerticalAlignment="Top" Height="16"  HorizontalAlignment="Left" Width="37" Grid.Column="1"/>
         <TextBlock  Grid.Row="5" TextWrapping="Wrap" Height =" 16"  Text="Categor"  HorizontalAlignment="Left" Width="48" Grid.Column="1" VerticalAlignment="Top"/>
-        <Rectangle Fill="#FFFFFFFF"  Grid.Row="3" Stroke="#FFABADB3" Height="1" Width =" 208" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Margin="1,14,4,14"  />
-        <Rectangle Fill="#FFFFFFFF" Grid.Row="5" Stroke="#FFABADB3" Height="1" Width =" 208" VerticalAlignment="Center"  HorizontalAlignment="Center" Grid.Column="1" Margin="1,14,4,14"  />
+        <Rectangle Fill="#FFFFFFFF"  Grid.Row="3" Stroke="#FFABADB3" Height="1" VerticalAlignment="Center" Grid.Column="1" Margin="1,14,4,14"  />
+        <Rectangle Fill="#FFFFFFFF" Grid.Row="5" Stroke="#FFABADB3" Height="1" VerticalAlignment="Center" Grid.Column="1" Margin="1,14,4,14"  />
 
 
     </Grid>

@@ -11,11 +11,22 @@
 
 
     <Grid>
-        <TextBox x:Name="TbName" HorizontalAlignment="Left"   Height="23" Margin="10,31,0,0" TextWrapping="Wrap" Text="{Binding Path = SelectProject.NameProject, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="272"/>
-        <TextBox x:Name="TbDescription" HorizontalAlignment="Left" Height="118" Margin="10,80,0,0" TextWrapping="Wrap" Text="{Binding Path=SelectProject.DescriptionProject, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="272"/>
-        <TextBlock x:Name="NameProject" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top"/>
-        <Button x:Name="BntAddProject" Content="Add" Command="{Binding addProject}" HorizontalAlignment="Left" Margin="202,203,0,0" VerticalAlignment="Top" Width="80"/>
-        <TextBlock x:Name="DescriptionProject" HorizontalAlignment="Left" Margin="10,59,0,0" TextWrapping="Wrap" Text="Descriprion" VerticalAlignment="Top"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="26*"/>
+            <RowDefinition Height="32*"/>
+            <RowDefinition Height="142*"/>
+            <RowDefinition Height="39*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="275*"/>
+            <ColumnDefinition Width="7*"/>
+        </Grid.ColumnDefinitions>
+        <TextBox x:Name="TbName" Margin="0,5,3,4" TextWrapping="Wrap" Text="{Binding Path = SelectProject.NameProject, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="1"/>
+        <TextBox x:Name="TbDescription" Margin="0,22,3,2" TextWrapping="Wrap" Text="{Binding Path=SelectProject.DescriptionProject, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="2"/>
+        <TextBlock x:Name="NameProject" HorizontalAlignment="Left" Margin="0,10,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Grid.Column="1" Height="16" Width="32"/>
+        <Button x:Name="BntAddProject" Content="Add" Command="{Binding addProject}" Margin="0,3,3,0" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Right" Width="80" Height="20" VerticalAlignment="Top"/>
+        <TextBlock x:Name="DescriptionProject" HorizontalAlignment="Left" Margin="0,1,0,0" TextWrapping="Wrap" Text="Descriprion" VerticalAlignment="Top" Grid.Column="1" Grid.Row="2" Height="16" Width="60"/>
 
     </Grid>
 </Window>

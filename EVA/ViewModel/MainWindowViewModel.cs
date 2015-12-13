@@ -1,10 +1,15 @@
 ﻿using System.Collections.ObjectModel;
 using System.Data.Entity.Migrations;
 using System.Drawing.Text;
+using System.IO;
 using System.Linq;
+using System.Windows.Forms;
 using System.Windows.Media.Animation;
 using EVA.View;
 using ClassLibraryEVA;
+using EVA.ViewModel.Commanda;
+using EVA.ViewModel.Strategy;
+using ReaderPDF = EVA.ViewModel.Strategy.ReaderPDF;
 
 namespace EVA.ViewModel
 {
@@ -30,9 +35,7 @@ namespace EVA.ViewModel
                     }
                    
                 }
-                
-                  
-
+               
                 return _mainWindowViewModel;
             }
         }
@@ -44,8 +47,9 @@ namespace EVA.ViewModel
         public ObservableCollection<Document> Documents { get; set; }
         public ObservableCollection<Categor> Categors { get; set; }
         public ObservableCollection<Group> Groups { get; set; }
+        public ObservableCollection<Note> Notes { get; set; }
 
-       private MainWindowViewModel()
+        private MainWindowViewModel()
         {
 
             //    _dataContext = new DataContext();
@@ -54,7 +58,8 @@ namespace EVA.ViewModel
                 Groups =  new ObservableCollection<Group>();
                 Contacts =  new ObservableCollection<Contact>();
                 Categors =  new ObservableCollection<Categor>();
-                Documents = new ObservableCollection<Document>();
+                 Documents = new ObservableCollection<Document>();
+            Notes  = new ObservableCollection<Note>();
             
         }
         
@@ -74,6 +79,21 @@ namespace EVA.ViewModel
             }
         }
 
+        private Note _selectNote =  new Note();
+
+        public Note SelectNote
+        {
+            get
+            {
+                return _selectNote;
+            }
+            set
+            {
+                _selectNote = value;
+                NotifyPropertyChanged("SelectProject");
+            }
+
+        }
         private ClassLibraryEVA.Project _selectProject = new Project();
 
         public ClassLibraryEVA.Project SelectProject
@@ -119,10 +139,36 @@ namespace EVA.ViewModel
             }
         }
 
-#endregion Model
+        private Document _selectDocument = new Document();
 
-#region Command
+        public Document SelectDocument
+        {
+            get
+            {
+                return _selectDocument;
+            }
+            set
+            {
+                _selectDocument = value;
+                NotifyPropertyChanged("SelectContact");
+            }
+        }
+
+
+        #endregion Model
+
+        #region Command
+
+        private Command _openFormTask;
+
+        public Command openFormTask
+        {
+
+            get { return _openFormTask ?? (_openFormTask = new Command(OpenFormTask)); }
+        }
+
         private Command _openFormProject;
+
         public Command openFormProject
         {
             get
@@ -154,6 +200,13 @@ namespace EVA.ViewModel
             get { return _openFormContac ?? (_openFormContac = new Command(OpenFormContact)); }
         }
 
+
+        private Command _openDocument;
+
+        public Command openDocument
+        {
+            get { return _openDocument ?? (_openDocument = new Command(OpenReaderDocument)); }
+        }
         private Command _openFormAddProject;
 
         public Command openFormAddProject
@@ -196,6 +249,16 @@ namespace EVA.ViewModel
         }
 
 
+        private Command _openNote;
+
+        public Command openNote
+        {
+            get { return _openNote ?? (_openNote = new Command(OpenNote)); }
+        }
+
+       
+
+
         private Command _removeProject;
 
         public Command removeProject
@@ -204,12 +267,64 @@ namespace EVA.ViewModel
         }
 
 
+        private Command _addDocument;
 
+        public Command addCommand
+        {
+            get { return _addDocument ?? (_addDocument = new Command(AddDocument)); }
+        }
+
+
+        private Command _addTask;
+
+        public Command addTask
+        {
+
+            get { return _addTask ?? (_addTask = new Command(AddTask)); }
+        }
+
+        private Command _addNote;
+
+        public Command addNote
+        {
+
+            get { return _addNote ?? (_addNote = new Command(AddNote)); }
+        }
+
+        private void AddTask(object arg)
+        {
+
+            Tasks.Add(SelectTask);
+            SelectTask = new Task();
+            NotifyPropertyChanged("Tasks");
+        }
+
+        private void AddNote(object arg)
+        {
+            
+
+
+        }
+
+        private void OpenNote(object arg)
+        {
+            var openNoteForm = new NoteForm();
+            openNoteForm.Show();
+        }
 
         private void OpenFormAddProject(object arg)
         {
             var addProject =  new AddProject();
             addProject.Show();
+
+        }
+
+
+        private void OpenFormTask(object arg)
+        {
+
+            var task =  new TasksForm();
+            task.Show();
 
         }
 
@@ -220,12 +335,19 @@ namespace EVA.ViewModel
 
         }
 
+
+        //static Reciver reciver = new Reciver();
+        //static OpenCommand command = new OpenCommand(reciver);
+        //private Invoker invoker = new Invoker(command);
+
         private void OpenFormDocument(object arg)
         {
+            //invoker.Open();
             var document = new DocumentsForm();
             document.Show();
 
         }
+
 
         private void OpenFormContact(object arg)
         {
@@ -273,8 +395,43 @@ namespace EVA.ViewModel
         {
             Projects.Remove(SelectProject);
         }
-        #endregion Command
 
+
+        private void AddDocument(object arg)
+        {
+
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.ShowDialog();
+            if (ofd.FileName != "")
+            {
+                SelectDocument.PathDocument = ofd.FileName;
+                Documents.Add(SelectDocument);
+            }
+        }
+
+        private ReaderContext _reader;
+
+        private void OpenReaderDocument (object arg)
+        {
+            var docpath = SelectDocument.PathDocument;
+
+            var type = Path.GetExtension(docpath);
+
+            if (type == ".pdf")
+            {
+                _reader = new ReaderContext(new ReaderPDF());
+                _reader.Reader(docpath);
+
+            }
+            else if (type == ".djvu")
+            {
+                _reader = new ReaderContext(new ReaderDJVU());
+                _reader.Reader(docpath);
+            }
+        }
+
+
+        #endregion Command
 
     }
 }

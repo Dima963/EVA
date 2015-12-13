@@ -1,6 +1,5 @@
 c:\Users\X\documents\visual studio 2015\Projects\EVA\ClassLibraryEVA\bin\Debug\ClassLibraryEVA.dll
 c:\Users\X\documents\visual studio 2015\Projects\EVA\ClassLibraryEVA\bin\Debug\ClassLibraryEVA.pdb
-c:\Users\X\documents\visual studio 2015\Projects\EVA\ClassLibraryEVA\obj\Debug\ClassLibraryEVA.csprojResolveAssemblyReference.cache
 c:\Users\X\documents\visual studio 2015\Projects\EVA\ClassLibraryEVA\obj\Debug\ClassLibraryEVA.dll
 c:\Users\X\documents\visual studio 2015\Projects\EVA\ClassLibraryEVA\obj\Debug\ClassLibraryEVA.pdb
 C:\Users\X\Documents\Visual Studio 2015\Projects\EVA\ClassLibraryEVA\bin\Debug\ClassLibraryEVA.dll.config
@@ -8,3 +7,4 @@ C:\Users\X\Documents\Visual Studio 2015\Projects\EVA\ClassLibraryEVA\bin\Debug\E
 C:\Users\X\Documents\Visual Studio 2015\Projects\EVA\ClassLibraryEVA\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\X\Documents\Visual Studio 2015\Projects\EVA\ClassLibraryEVA\bin\Debug\EntityFramework.xml
 C:\Users\X\Documents\Visual Studio 2015\Projects\EVA\ClassLibraryEVA\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\X\Documents\Visual Studio 2015\Projects\EVA\ClassLibraryEVA\obj\Debug\ClassLibraryEVA.csprojResolveAssemblyReference.cache

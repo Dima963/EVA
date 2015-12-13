@@ -11,17 +11,19 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using EVA.ViewModel;
 
 namespace EVA.View
 {
     /// <summary>
-    /// Логика взаимодействия для Tasks.xaml
+    /// Логика взаимодействия для TasksForm.xaml
     /// </summary>
-    public partial class Tasks : Window
+    public partial class TasksForm : Window
     {
-        public Tasks()
+        public TasksForm()
         {
             InitializeComponent();
+            DataContext = MainWindowViewModel.instance;
         }
 
       
